@@ -1,5 +1,5 @@
 # IRtranslator
-Arduino IR Translator. Converts incoming IR codes from one manufacturer to another. You can use the Arduino source code to define the inbound IR codes you want to capture & have another IR code sent out. This lets you translate from one manufacturer to another.
+Arduino IR Translator. Converts incoming IR codes from one manufacturer to another. You can alter the Arduino sourcecode to define the inbound IR codes you want to capture & have another IR code sent out. This lets you translate from one manufacturer to another.
 
 This is something I wanted to do when the Fire TV equipment control feature didn't have my model of speakers (Edifier R1855DB)in their list. None of the other models worked, and I didn't hold out much hope at having the them added, especially when Edifier themselves said *"Our remotes use custom IR codes that can not be inputted into a universal remote"*. And, *"information about the IR code is not open to the public"*.
 
@@ -64,4 +64,3 @@ What you need to do here is check that the IR codes that the Arduino sends match
 In the Arduino source code you'll find a section where it'll send a POWER command when the board boots up. This is because I'm powering the Arduino from the USB socket on the TV.. the USB port is only powered when the TV is on, so we know that when the board boots, we also need to turn the speakers on. If your TV works differently, or you're using this project in a different way, just comment out that section.
 
 There is also a section of code that looks for a sequence of button presses.. in my case I wanted some way to toggle the power of the speakers in case they ended up out-of-sync somehow. I'm looking for the MUTE button to be pressed 3x followed by VOL UP, which then triggers the POWER IR code to be sent. You may not need this, or want a different sequence/action.. in which case alter the Arduino code to do whatever you like.
-
