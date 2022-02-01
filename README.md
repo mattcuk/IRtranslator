@@ -1,7 +1,11 @@
 # IRtranslator
-Arduino IR Translator. Converts incoming IR codes from one manufacturer to another. You can alter the Arduino sourcecode to define the inbound IR codes you want to capture & have another IR code sent out. This lets you translate from one manufacturer to another.
+__Arduino IR Code Translator__ - Converts incoming IR codes from one manufacturer to another. You can use the Arduino source code to define the inbound IR codes you want to capture & have another IR code sent out. This lets you translate from one manufacturer to another.
 
-This is something I wanted to do when the Fire TV equipment control feature didn't have my model of speakers (Edifier R1855DB)in their list. None of the other models worked, and I didn't hold out much hope at having the them added, especially when Edifier themselves said *"Our remotes use custom IR codes that can not be inputted into a universal remote"*. And, *"information about the IR code is not open to the public"*.
+This is something I wanted to do when the Fire TV equipment control feature didn't have my model of speakers (Edifier R1855DB) in their list. None of the other models worked, and I didn't hold out much hope at having the them added by Amazon, especially when Edifier support said *"Our remotes use custom IR codes that can not be inputted into a universal remote"*. And, *"information about the IR code is not open to the public"* -- challenge accepted!!
+
+# YouTube Video of the Project
+
+[![Watch the YouTube video for this project](images/ytThumb.png)](https://www.youtube.com/watch?v=rTCGy0bqljE)
 
 # Part List
 
@@ -17,7 +21,15 @@ There's not much to this project.. you can substitute the KY-005 with an IR LED 
 
 # Dumping/Recording IR Codes
 
-After setting up the components as per the wiring diagram above, upload the code (in src/irtranslator) into the Arduino using the Arduino IDE. Keep it attached to the PC so that you can look in the Serial Monitor to copy down the codes that get sent into the IR receviver.
+After setting up the components as per the wiring diagram above, open up the Arduino IDE and make sure you've installed the 'IRremote' library;
+
+![Board Settings](images/irLib.png) 
+
+Then select your Arduino board type and the correct port when it's attached to your PC via USB. Mine looks like this;
+
+![Board Settings](images/boardSettings.png) 
+
+Now you can upload the code (in src/irtranslator) into the Arduino using the Arduino IDE. Keep it attached to the PC so that you can look in the Serial Monitor to copy down the codes that get sent into the IR receviver.
 
 You'll need to decide what your source and target brands will be, and what buttons you want to translate. In my case, I chose to have the Fire TV remote transmit codes for an Amazon Basics Soundbar. Those then needed to send out codes for the Edifier R1855DB. 
 
@@ -64,3 +76,4 @@ What you need to do here is check that the IR codes that the Arduino sends match
 In the Arduino source code you'll find a section where it'll send a POWER command when the board boots up. This is because I'm powering the Arduino from the USB socket on the TV.. the USB port is only powered when the TV is on, so we know that when the board boots, we also need to turn the speakers on. If your TV works differently, or you're using this project in a different way, just comment out that section.
 
 There is also a section of code that looks for a sequence of button presses.. in my case I wanted some way to toggle the power of the speakers in case they ended up out-of-sync somehow. I'm looking for the MUTE button to be pressed 3x followed by VOL UP, which then triggers the POWER IR code to be sent. You may not need this, or want a different sequence/action.. in which case alter the Arduino code to do whatever you like.
+
