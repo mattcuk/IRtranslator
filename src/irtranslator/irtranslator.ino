@@ -1,6 +1,6 @@
 /* IRtranslator v1.0
  * -----------------
- *  Written by Matt Collinge.
+ *  Written by MattC.
  *  https://github.com/mattcuk/IRtranslator
  *  Arduino IR Translator. Converts incoming IR codes from one manufacturer to another set of IR codes from a different manufacturer.
  */
@@ -22,7 +22,7 @@ void setup()
   // Send POWER ON to speaker IR as the board boots up (power applied from the TV's USB port)
   /*delay(10000); // 10 second delay when powering up.. helped fix a problem where the Samsung TV powered the USB port momentarily after 2+ hours :/
   Serial.println("Sending alternative POWER command (first boot when TV's USB port activated)");
-  // Raw data for Edifier R1855DB power button
+  // Raw data for Edifier R1850DB power button
   unsigned int rawData[] = { 8980,4420, 580,520, 580,520, 580,570, 580,520, 630,1620, 580,520, 580,520, 630,520, 580,1620, 630,1620, 630,1620, 580,520, 580,520, 580,1670, 580,1620, 630,1620, 630,470, 630,1620, 630,1570, 630,520, 580,520, 630,520, 580,1620, 630,520, 580,1670, 580,470, 630,520, 580,1620, 630,1620, 630,1620, 630,470, 630,1620, 580 };
   IrSender.sendRaw(rawData, sizeof(rawData)/sizeof(int), 38);
   delay(5); // Make sure data got sent */
@@ -60,7 +60,7 @@ void loop()
           // It's useful when the POWER ON block is causing you issues in setup(). To disable this behaviour simply set the justBooted variable to false on line 36.
           justBooted = false;
           Serial.println("Sending alternative POWER command (first booted)");
-          // Raw data for Edifier R1855DB power button
+          // Raw data for Edifier R1850DB power button
           unsigned int rawData[] = { 8980,4420, 580,520, 580,520, 580,570, 580,520, 630,1620, 580,520, 580,520, 630,520, 580,1620, 630,1620, 630,1620, 580,520, 580,520, 580,1670, 580,1620, 630,1620, 630,470, 630,1620, 630,1570, 630,520, 580,520, 630,520, 580,1620, 630,520, 580,1670, 580,470, 630,520, 580,1620, 630,1620, 630,1620, 630,470, 630,1620, 580 };
           IrSender.sendRaw(rawData, sizeof(rawData)/sizeof(int), 38);
           delay(sendDelay); // Make sure data got sent */
@@ -70,28 +70,28 @@ void loop()
           // Look for the buttons we want mapped from the Fire TV remote to the Edifier speakers
           if (IrReceiver.decodedIRData.command == 0x40) {
               Serial.println("Received POWER .. sending alternative command");
-              // Raw data for Edifier R1855DB power button
+              // Raw data for Edifier R1850DB power button
               unsigned int rawData[] = { 8980,4420, 580,520, 580,520, 580,570, 580,520, 630,1620, 580,520, 580,520, 630,520, 580,1620, 630,1620, 630,1620, 580,520, 580,520, 580,1670, 580,1620, 630,1620, 630,470, 630,1620, 630,1570, 630,520, 580,520, 630,520, 580,1620, 630,520, 580,1670, 580,470, 630,520, 580,1620, 630,1620, 630,1620, 630,470, 630,1620, 580 };
               IrSender.sendRaw(rawData, sizeof(rawData)/sizeof(int), 38);
               currCommand = 'P';
               delay(40000); // 40 sec delay so that power doesn't accidently get toggled (the TVs USB power should auto off after 20 sec.. powering this all down)
           } else if (IrReceiver.decodedIRData.command == 0x41) {
               Serial.println("Received VOL Up .. sending alternative command");
-              // Raw data for Edifier R1855DB volume up
+              // Raw data for Edifier R1850DB volume up
               unsigned int rawData[] = { 8880,4520, 530,570, 530,570, 580,570, 530,570, 580,1670, 530,570, 530,570, 580,570, 530,1670, 580,1670, 530,1670, 580,570, 530,570, 530,1720, 530,1670, 580,1670, 530,570, 580,1670, 530,1670, 580,570, 530,570, 530,620, 530,570, 580,520, 580,1670, 530,570, 580,570, 530,1670, 580,1670, 530,1670, 580,1670, 530,1670, 580 };
               IrSender.sendRaw(rawData, sizeof(rawData)/sizeof(int), 38);
               currCommand = 'U';
               delay(sendDelay);
           } else if (IrReceiver.decodedIRData.command == 0x45) {
               Serial.println("Received VOL Down .. sending alternative command");
-              // Raw data for Edifier R1855DB volume down
+              // Raw data for Edifier R1850DB volume down
               unsigned int rawData[] = { 8930,4420, 580,570, 580,520, 580,520, 580,570, 580,1620, 580,570, 580,520, 580,520, 580,1670, 580,1620, 630,1620, 580,520, 580,570, 580,1620, 580,1670, 580,1670, 580,1620, 580,1670, 580,1620, 580,570, 530,620, 530,520, 630,1620, 580,520, 580,570, 580,520, 580,570, 580,1620, 580,1670, 580,1620, 580,570, 580,1620, 580 };
               IrSender.sendRaw(rawData, sizeof(rawData)/sizeof(int), 38);
               currCommand = 'D';
               delay(sendDelay);
           } else if (IrReceiver.decodedIRData.command == 0x48) {
               Serial.println("Received VOL Mute .. sending alternative command");
-              // Raw data for Edifier R1855DB mute button
+              // Raw data for Edifier R1850DB mute button
               unsigned int rawData[] = { 8930,4470, 580,520, 580,520, 630,520, 580,520, 580,1670, 580,520, 580,570, 580,520, 580,1620, 580,1670, 580,1670, 580,520, 580,520, 580,1670, 580,1670, 580,1620, 580,1670, 580,520, 580,520, 630,520, 580,520, 630,470, 630,1620, 580,520, 630,520, 580,1620, 580,1670, 580,1670, 580,1620, 580,1670, 580,520, 580,1670, 580 };
               IrSender.sendRaw(rawData, sizeof(rawData)/sizeof(int), 38);
               currCommand = 'M';
@@ -110,7 +110,7 @@ void loop()
 
           arrayPush(seqCurrent, ' ', seqLen); // Reset the sequence
           
-          // Raw data for Edifier R1855DB power button
+          // Raw data for Edifier R1850DB power button
           delay(100);
           unsigned int rawData[] = { 8980,4420, 580,520, 580,520, 580,570, 580,520, 630,1620, 580,520, 580,520, 630,520, 580,1620, 630,1620, 630,1620, 580,520, 580,520, 580,1670, 580,1620, 630,1620, 630,470, 630,1620, 630,1570, 630,520, 580,520, 630,520, 580,1620, 630,520, 580,1670, 580,470, 630,520, 580,1620, 630,1620, 630,1620, 630,470, 630,1620, 580 };
           IrSender.sendRaw(rawData, sizeof(rawData)/sizeof(int), 38);
