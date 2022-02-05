@@ -1,7 +1,7 @@
 # IRtranslator
 __Arduino IR Code Translator__ - Converts incoming IR codes from one manufacturer to another. You can use the Arduino source code to define the inbound IR codes you want to capture & have another IR code sent out. This lets you translate from one manufacturer to another.
 
-This project came about when the Amazon Fire TV equipment control feature didn't have my model of speakers (Edifier R1850DB) in their list. None of the other models worked, and I didn't hold out much hope at having the them added by Amazon, especially when Edifier support said *"Our remotes use custom IR codes that can not be inputted into a universal remote"*. And, *"information about the IR code is not open to the public"* -- **challenge accepted!!**
+This project came about when the Amazon Fire TV equipment control feature didn't have my model of speakers (Edifier R1855DB or R1850DB) in their list. None of the other models worked, and I didn't hold out much hope at having the them added by Amazon, especially when Edifier support said *"Our remotes use custom IR codes that can not be inputted into a universal remote"*. And, *"information about the IR code is not open to the public"* -- **challenge accepted!!**
 
 # Video of the Project
 
@@ -46,7 +46,7 @@ Now you can upload the code (in src/irtranslator) into the Arduino using the Ard
 
 # Capturing the IR Codes
 
-You'll need to decide what your source and target brands will be, and what buttons you want to translate. In my case, I chose to have the Fire TV remote transmit codes for an Amazon Basics Soundbar. I'll then need to send out IR codes for an Edifier R1850DB.
+You'll need to decide what your source and target brands will be, and what buttons you want to translate. In my case, I chose to have the Fire TV remote transmit codes for an Amazon Basics Soundbar. I'll then need to send out IR codes for an Edifier R1855DB/R1850DB.
 
 Go through the buttons you want to capture and note them down (you're best copying both lines.. the one with the shorter code, and the full RAW data);
 
