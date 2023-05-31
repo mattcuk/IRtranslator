@@ -34,6 +34,8 @@ After setting up the components as per the wiring diagram above, open up the Ard
 
 ![Board Settings](images/irLib.png) 
 
+Note: I'm using version 3.5 of the IRremote library, and v4 isn't compatible with the code I've written. 
+
 ## Board Settings
 
 Then select your Arduino board type and the correct port when it's attached to your PC via USB. Mine looks like this;
